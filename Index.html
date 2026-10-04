@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>playixg — Minecraft Server</title>
+  <meta name="description" content="playixg Minecraft server portal. Join our community and get server information.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #070b12;
+      color: #f5f7fb;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1050px; margin: auto; padding: 24px; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0 34px;
+    }
+    .brand { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
+    nav { display: flex; gap: 18px; color: #aab4c4; font-size: 14px; }
+    nav a:hover { color: #fff; }
+    .hero {
+      border: 1px solid #1c2635;
+      border-radius: 24px;
+      padding: 48px 34px;
+      background: linear-gradient(145deg, #0e1624, #090d15);
+      text-align: center;
+      box-shadow: 0 20px 60px #0008;
+    }
+    .badge {
+      display: inline-block; padding: 7px 12px; border-radius: 999px;
+      background: #14251d; color: #66e59a; font-size: 12px; font-weight: 800;
+    }
+    h1 { font-size: clamp(42px, 9vw, 82px); margin: 18px 0 8px; letter-spacing: -4px; }
+    .sub { color: #aab4c4; max-width: 620px; margin: auto; line-height: 1.6; }
+    .join {
+      margin: 28px auto 0; max-width: 610px; display: flex; gap: 10px;
+      background: #0a101a; padding: 10px; border: 1px solid #263245; border-radius: 15px;
+    }
+    .join input {
+      flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+      color: white; padding: 12px; font-size: 15px;
+    }
+    button, .button {
+      border: 0; cursor: pointer; border-radius: 11px; padding: 12px 18px;
+      font-weight: 800; background: #fff; color: #070b12;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px;
+    }
+    .card {
+      background: #0d131e; border: 1px solid #1c2635; border-radius: 18px; padding: 22px;
+    }
+    .icon { font-size: 25px; }
+    .card h3 { margin: 12px 0 7px; }
+    .card p { color: #96a1b2; line-height: 1.5; font-size: 14px; }
+    .info {
+      margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .row { display: flex; justify-content: space-between; gap: 15px; padding: 12px 0; border-bottom: 1px solid #202a39; }
+    .row:last-child { border-bottom: 0; }
+    .muted { color: #8f9bad; }
+    footer { text-align: center; color: #667286; padding: 35px 0 10px; font-size: 13px; }
+    @media (max-width: 720px) {
+      .grid, .info { grid-template-columns: 1fr; }
+      header { align-items: flex-start; }
+      nav { display: none; }
+      .hero { padding: 38px 18px; }
+      .join { flex-direction: column; }
+      .join button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">playixg</div>
+      <nav>
+        <a href="#server">Server</a>
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="server">
+        <span class="badge">● SERVER PORTAL</span>
+        <h1>playixg</h1>
+        <p class="sub">
+          Your Minecraft server hub. Find the server address, check the server
+          information, and jump into the community.
+        </p>
+
+        <div class="join">
+          <input id="serverAddress" value="playixlol.minekeep.gg" readonly aria-label="Java Minecraft server address">
+          <button onclick="copyAddress()">COPY JAVA IP</button>
+        </div>
+        <div class="join" style="margin-top:10px;">
+          <input id="bedrockAddress" value="playixlol.bedrock.minekeep.gg" readonly aria-label="Bedrock Minecraft server address">
+          <button onclick="copyBedrock()">COPY BEDROCK IP</button>
+        </div>
+        <p id="copyStatus" class="muted" style="font-size:12px;min-height:18px;"></p>
+        <p class="muted" style="font-size:12px;">Java: <strong>playixlol.minekeep.gg</strong> · Bedrock: <strong>playixlol.bedrock.minekeep.gg</strong></p>
+      </section>
+
+      <section class="grid" id="features">
+        <article class="card">
+          <div class="icon">🎮</div>
+          <h3>Advanced Server</h3>
+          <p>Powered by Purpur with support for a large plugin ecosystem.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🌍</div>
+          <h3>Java + Bedrock</h3>
+          <p>Use Geyser and Floodgate for cross-platform Minecraft access.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🔄</div>
+          <h3>Smart Hosting</h3>
+          <p>The server can sleep while empty and wake when players connect, depending on the host.</p>
+        </article>
+      </section>
+
+      <section class="info" id="community">
+        <article class="card">
+          <h3>Server information</h3>
+          <div class="row"><span class="muted">Edition</span><strong>Java + Bedrock</strong></div>
+          <div class="row"><span class="muted">Software</span><strong>Purpur</strong></div>
+          <div class="row"><span class="muted">Port</span><strong>19132</strong></div>
+          <div class="row"><span class="muted">Status</span><strong>Online / Sleep</strong></div>
+        </article>
+
+        <article class="card">
+          <h3>Community</h3>
+          <p>Stay updated with announcements, events, rules, and server news.</p>
+          <a class="button" href="#" onclick="alert('Add your Discord/community link here.'); return false;">COMMUNITY</a>
+        </article>
+      </section>
+    </main>
+
+    <footer>© 2026 playixg • Minecraft server community</footer>
+  </div>
+
+  <script>
+    function copyBedrock() {
+      const input = document.getElementById("bedrockAddress");
+      navigator.clipboard.writeText(input.value).then(() => {
+        document.getElementById("copyStatus").textContent = "Bedrock address copied!";
+      }).catch(() => {
+        input.select();
+        document.execCommand("copy");
+        document.getElementById("copyStatus").textContent = "Bedrock address copied!";
+      });
+    }
+
+    function copyAddress() {
+      const input = document.getElementById("serverAddress");
+      navigator.clipboard.writeText(input.value).then(() => {
+        document.getElementById("copyStatus").textContent = "Server address copied!";
+      }).catch(() => {
+        input.select();
+        document.execCommand("copy");
+        document.getElementById("copyStatus").textContent = "Server address copied!";
+      });
+    }
+  </script>
+
+<a href="https://discord.gg/HTgthPMBB" target="_blank" rel="noopener noreferrer"
+   style="display:inline-block;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;">
+  JOIN OUR DISCORD
+</a>
+
+</body>
+</html>
